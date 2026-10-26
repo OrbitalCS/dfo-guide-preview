@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style id="enhanced-tokens">:root{--ink:#0e1013;--slate:#171b21;--iron:#2b323b;--bone:#e9e4d9;--dim:#9a9486;--brass:#c08a3e;--blood:#8c3a32;--ruby:#b91309;--verdigris:#4e7f72;--emerald:#2c7341;--cinnabar:#bf2a1f;--display:"Cormorant", Georgia, serif;--data:"Barlow Semi Condensed", system-ui, sans-serif;--brand:"Grenze Gotisch", "Cormorant", Georgia, serif;--side:264px;--gap:1px}</style>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Custom classes - DFO Online</title>
+  <meta name="description" content="How DFO Online's class builder works, how to export and import a class file, and three example builds to load." />
+  <!--
+    PLAYER-GUIDE (2026-10-25): the class builder, explained, and three
+    example builds. A DOCUMENT: no script, no file of its own, no style of its own
+    (scripts/landingHtml.mjs DOCUMENT_PATHS dresses it at build).
+
+    THE EXAMPLE BUILDS ARE THE GAME'S OWN FILES, not hand-written: each was
+    written by src/systems/customClass.js customClassDoc, serialised as the
+    builder's Export does, read back by parseCustomClassDoc and passed through
+    the builder's exit gates. They live in public/guide/classes/ because Vite
+    copies public/ into the build as it is; a file beside this page would
+    never reach the site. The numbers below are read from those files.
+  -->
+  <style id="document-style">@font-face{font-family:Pixelify Five;unicode-range:U+35;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAIIAA0AAAAABKQAAAG5AAEAQgAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcIAZgADQRCAo8UQE2AiQDCAsGAAQgBYQEByAb0gMRFZQRZF8mbyrtyKnsmUtW0uh5eajRkkYiwmd9zzwevvZ7PXd3A4jjU0BFqJDHE1p0Mq4uqiyrUX1VpBcA/QCAwLv/sfo5F6Rn9t09Ls65/8pEjkFdE/m2A84AIXIHmiZwJJFm0pbQC2cFlGjCRS2xqAUWJRAZpScLgtmEN4H2INg9T6DZqHGxacuuvRoVqAhYvaSloI70IIWdVRLHLfgNBOxl356deyxZYUWpr+rJNb8JiK/pmJSRkNErC/QqJlEUgRWVXLV6ESBEVQESKEjoRA+gAFJrOROtuU2rFi1ORpsvt1y9+lW3f3N7TL8NBMKGS6Nj8yes/za5Bg8HfwuvHq+zWX05l2uol0Dwz5V3RP1cQJeUzrud3rstkMyqCwJGSQINDsuiNGGRJvRaJGn3iGytlxSz0U6dvbHww+rNxh0babDbhyLLJzB13YBvnsCnqKuRDUnSwnPAMmETnOcpx2EEPp+mbgw1LSumfKYqw0bLELM6SbGdRm08TAsa7XeSzTUZDFX+dPS7X+6RR5RVmJvg9p8MY4EtHAlMk2kyC+YFf/8E/GKovmqrnuLEDhW0/Ak2MwEAAA==)format("woff2")}@font-face{font-family:Pixelify Five;unicode-range:U+32,U+5A;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAGgAAoAAAAAAxAAAAFVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPAqBJIEfATYCJAMKCwgABCAFaQcoG08CEK4G7CZ4Jq7VZnqPaS6YXuWQw1RbJh6+H/t27nvrmtQMbRCLt0hnKJGdvlT+z5/rbZqg29elVx1WpXCJB/CNL2EDTlNMNbGZr4i7wsrKf1Qlsx1PdmMc+kB2w92NINLQ3/I4DzSggLvLbQzxeALBIZ3X3J0op6mYYkWkA21shWnP+fr/hfwzOID4lQKdICGjSRZoUmQQJYqEZNpzAflL4Y8FADIoQSVGsQwoApTJRWg/BOVjEKpJt/zRejXl4RPResYon4PypSPKH6ezwgzNirNnNhfmUC4f5rlc/pHOPd3f5P95UE+t19nX6YofP9MAgeB3e0qV0f6R8wv8LSXHVguvqTEFZAkEBz1d7mKtI1ileMUFqwJZpzKQABWZFyBUUDgpVSGLonKhSX2hpEbfbhBlI6P9rLf8Vr0BeAJRrAMjezM9SwltXWsjdQs4kyybrQEAAAA=)format("woff2")}*{box-sizing:border-box}body{color:#d8cfae;-webkit-font-smoothing:none;font-variant-ligatures:none;font-feature-settings:"liga" 0, "clig" 0;background:#0a0c11;min-height:100dvh;margin:0;font-family:Pixelify Five,Pixelify Sans,monospace;font-size:16px;line-height:1.6}a{color:#d8cfae;overflow-wrap:anywhere;border-bottom:2px solid #7d7460;text-decoration:none}:is(a:hover,a:focus-visible){color:#f3ef2c;border-color:var(--brass);text-shadow:2px 2px #5d4d0c;outline:none}.skip{background:var(--brass);color:#0a0c11;z-index:10;border:0;padding:10px 14px;position:absolute;top:-60px;left:12px}.skip:focus{top:12px}.caps{letter-spacing:.12em;text-transform:uppercase;color:#7d7460;font-size:14px}.docbar{flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;max-width:760px;margin:0 auto;padding:20px 24px 8px;display:flex}.docbar .home{letter-spacing:.18em;text-transform:uppercase;border:0;font-size:18px}.docbar nav{flex-wrap:wrap;gap:6px 22px;display:flex}.docbar nav a{color:#7d7460;border:0}.docbar nav a[aria-current=page]{color:var(--brass)}.doc{max-width:760px;padding:8px 24px max(56px, env(safe-area-inset-bottom));margin:0 auto}.doc h1,.doc h2{text-shadow:2px 2px #000000b3;overflow-wrap:anywhere;font-weight:400}.doc h1{margin:16px 0 12px;font-size:clamp(24px,4.2vw,34px);line-height:1.2}.doc h2{color:var(--brass);margin:32px 0 10px;font-size:19px;line-height:1.35}.doc p{margin:0 0 12px}.doc ul{margin:0 0 12px;padding-left:24px}.doc li{margin:0 0 6px}.doc strong{font-weight:500}.guide h3{text-shadow:4px 4px #000000b3;margin:0;font-weight:400}.guide .panel{text-align:center;border:4px solid;margin:0 0 44px;padding:0 30px 34px;position:relative}.guide .panel>h2{color:#d8cfae;margin:0 -30px;padding:24px 16px 20px;font-size:clamp(36px,5vw,52px);line-height:1}.guide .panel>.rule{margin:18px auto 26px}.guide .panel>ul,.guide .panel>ol{text-align:left}.guide .card{text-align:left;border:2px solid;margin:0 0 12px;padding:16px 18px 4px}.guide .card h3{margin-bottom:6px;font-size:24px}.guide .steps{counter-reset:step;text-align:left;max-width:64ch;margin:0 auto;padding:0;list-style:none}.guide .step{border:2px solid;grid-template-columns:54px 1fr;gap:0 18px;margin:0 0 12px;padding:16px 18px 4px;display:grid}.guide .step:before{counter-increment:step;content:counter(step);width:54px;height:54px;color:var(--brass);text-shadow:2px 2px #000c;border:2px solid;justify-content:center;align-items:center;font-size:36px;line-height:1;display:flex}.guide .qa{text-align:left;flex-direction:column;gap:12px;margin:24px 0 0;display:flex}.guide .qa>div{border:2px solid;grid-template-columns:220px 1fr;gap:6px 24px;padding:16px 18px;display:grid}.guide .qa dt{text-shadow:2px 2px #000000b3;font-size:24px;line-height:1.1}.guide .qa dd{color:#a89f88;margin:0;font-size:15px}.guide .doorlinks{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;display:grid}.guide .doorlinks a{text-align:center;justify-content:center}.guide .doorlinks a,.guide a[download]{color:#d8cfae;border:2px solid;align-items:center;min-height:44px;padding:6px 14px;display:inline-flex}.guide .rule{align-items:center;gap:16px;width:min(420px,70vw);margin:30px auto 32px;display:flex}.guide .rule:before,.guide .rule:after{content:"";opacity:.55;background:#7d7460;flex:1;height:2px}.guide .gem{background:var(--ruby);width:2px;height:2px;box-shadow:0 -4px 0 var(--brass), 0 4px 0 var(--brass), -4px 0 0 var(--brass), 4px 0 0 var(--brass), -2px -2px 0 var(--ruby), 2px -2px 0 var(--ruby), -2px 2px 0 var(--ruby), 2px 2px 0 var(--ruby);position:relative}@media (max-width:600px){.guide .doorlinks{grid-template-columns:repeat(2,1fr)}}@media (max-width:860px){.guide .panel{padding:0 16px 24px}.guide .panel>h2{margin:0 -16px}.guide .step{grid-template-columns:44px 1fr;gap:0 14px;padding:14px 14px 4px}.guide .step:before{width:44px;height:44px;font-size:28px}.guide .qa>div{grid-template-columns:1fr}}</style>
+  <style id="guide-kit">.guide .panel{background:repeating-conic-gradient(#ffffff06 0 25%, transparent 0 50%) 0 0 / 4px 4px, #0c0e12ed;border-color:#c2b79a #3a352a #25221b #9a9079;box-shadow:0 0 0 1px #050608,0 0 0 3px #5a5446,0 0 0 4px #050608,inset 0 0 0 1px #050608,inset 0 0 0 2px #16140f,6px 6px 0 4px #0000006b}.guide .panel:before{content:"";pointer-events:none;background:linear-gradient(#f3cf86,#f3cf86) 7px 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) 5px 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) 1px 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) 13px 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) 1px 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) 0 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px top 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px top 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px top 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px top 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px top 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 top 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) left 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) left 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) left 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) left 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) left 0 bottom 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 bottom 0/16px 16px no-repeat;position:absolute;inset:-10px}.guide .panel>h2{background:linear-gradient(#ffffff0d,#fff0 70%);box-shadow:0 2px #050608,0 3px #a3988042}.guide .card,.guide .step,.guide .qa>div{background-color:#0f1116eb;border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,inset 0 0 0 1px #050608bf,inset 0 3px 0 -1px #ffffff0a,3px 3px 0 1px #0006}.guide .doorlinks a,.guide a[download]{background-color:#1c1f26;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,2px 2px 0 1px #00000073}:is(.guide .doorlinks a:hover,.guide a[download]:hover,.guide .doorlinks a:focus-visible,.guide a[download]:focus-visible){background-color:#262a33;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#f3cf86 #7a5424 #5c3f1a #c08a3e}.guide .doorlinks a:active,.guide a[download]:active{border-color:#25221b #7a7260 #9a9079 #3a352a;translate:1px 1px;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}.guide .step:before{background-color:#040507b3;border-color:#25221b #7a7260 #9a9079 #3a352a;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}@media (prefers-reduced-motion:reduce){.guide .doorlinks a:active,.guide a[download]:active{translate:none}}</style>
+  <meta name="theme-color" content="#0e1013">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%230e1013%22%2F%3E%3Cpath%20d%3D%22M16%205l11%2011-11%2011L5%2016z%22%20fill%3D%22%23c08a3e%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600&amp;family=Barlow+Semi+Condensed:wght@400;500;600&amp;family=Jacquard+12&amp;family=Pixelify+Sans:wght@400;500&amp;display=swap">
+  <meta name="build-tag" content="459963bf4335">
+<style id="preview-banner">.preview-banner { margin: 0; padding: 10px 24px; background: var(--brass); color: #0a0c11; text-align: center;
+  font-size: 15px; line-height: 1.45; text-shadow: none; }
+.preview-banner a { color: #0a0c11; border-bottom: 2px solid #0a0c11; }
+.preview-banner a:hover, .preview-banner a:focus-visible { color: #0a0c11; text-shadow: none; }</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <p class="preview-banner" role="note">Preview: a proposed player guide for DFO Online by OrbitalCS. Not official. Snapshot of 2026-10-25. The real site is <a href="https://daggerfalljs.dev/">daggerfalljs.dev</a></p>
+  <header class="docbar">
+    <a class="home" href="https://daggerfalljs.dev/">DFO Online</a>
+    <nav class="caps" aria-label="Guide">
+      <a href="../guide/">How to play</a>
+      <a href="../guide/races.html">Races</a>
+      <a href="../guide/skills.html">Skills</a>
+      <a href="../guide/attributes.html">Attributes</a>
+      <a href="../guide/custom-classes.html" aria-current="page">Custom classes</a>
+    </nav>
+  </header>
+  <main id="main" class="doc guide">
+    <article>
+      <h1>Custom classes</h1>
+      <p>Daggerfall lets you build a class of your own instead of taking one of its eighteen. On the class screen, choose the last row, <strong>Build a class of your own</strong>. You can save what you build to a file and load it again on any character, on any device.</p>
+
+      <h2 id="builder">How the builder works</h2>
+      <ul>
+        <li><strong>Hit points per level,</strong> from 4 to 30. The default is 8.</li>
+        <li><strong>Attributes.</strong> All eight start at 50. Move points from one to another, each between 10 and 75, until none are left over.</li>
+        <li><strong>Skills.</strong> Three primary, three major and six minor, each skill once. Your level rises as these skills do. A magic skill among your primary or major skills starts you with the Spellsword's spells.</li>
+        <li><strong>Special advantages and disadvantages,</strong> up to seven of each. Some cannot be taken together, such as an immunity and a weakness to the same thing.</li>
+        <li><strong>Reputations</strong> with merchants, peasants, scholars, the nobility and the underworld. What you raise in one you must lower in another.</li>
+      </ul>
+
+      <h2 id="dagger">The difficulty dagger</h2>
+      <p>The dagger beside the builder is the class's point total. Every hit point above 8 adds one point, and every hit point below 8 takes away two. Advantages add points. Disadvantages take them away.</p>
+      <p>The dagger does not measure how hard the class is to play. It measures how fast it levels. The higher the dagger, the more each skill has to be used before it rises: a class at the bottom (-12) levels about ten times as fast as one at the top (+40). Outside that range the dagger is in the red, and Create will not make the class.</p>
+
+      <h2 id="files">Export and import a class</h2>
+      <ul>
+        <li><strong>Export</strong> in the builder copies the class to your clipboard, or saves it as a file ending <strong>.dfclass.json</strong>.</li>
+        <li><strong>Import</strong> loads one: paste it into the box and press Load, paste from the clipboard, or open a file. It replaces the class you were building.</li>
+        <li>An imported class still has to pass every check Create makes. Any special pick the builder would not allow is left out, and the builder tells you how many.</li>
+      </ul>
+
+      <section class="panel" aria-labelledby="example-builds">
+        <h2 id="example-builds">Example builds</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p>Three builds that show the builder's rules at work: one high on the dagger, one in the middle and one at the bottom. Save a file and open it with Import to see it in the builder, or to start your own from it.</p>
+        <div class="card">
+          <h3 id="shieldbearer">Shieldbearer</h3>
+          <p><strong>Shows:</strong> what hit points cost. 20 per level is twelve points on the dagger by itself, so the class levels slowly.</p>
+          <p><a href="classes/shieldbearer.dfclass.json" download>shieldbearer.dfclass.json</a></p>
+          <ul>
+            <li><strong>Dagger:</strong> +19 (levels at ×1.91). 20 hit points per level is +12.</li>
+            <li><strong>Advantages:</strong> Rapid Healing (General) +4, Resistance to Poison +5.</li>
+            <li><strong>Disadvantages:</strong> Forbidden Material: Daedric -2.</li>
+            <li><strong>Primary:</strong> Long Blade, Dodging, Medical. <strong>Major:</strong> Blunt Weapon, Archery, Restoration. <strong>Minor:</strong> Swimming, Climbing, Running, Jumping, Etiquette, Streetwise.</li>
+            <li><strong>Attributes:</strong> Endurance 70 and Strength 60, paid for with Intelligence and Personality at 40.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 id="hedge-mage">Hedge Mage</h3>
+          <p><strong>Shows:</strong> paying for magic. Few hit points and a forbidden armor take points off the dagger, and Increased Magery puts them back. With all six schools in its primary and major skills, it starts with the Spellsword's spells.</p>
+          <p><a href="classes/hedge-mage.dfclass.json" download>hedge-mage.dfclass.json</a></p>
+          <ul>
+            <li><strong>Dagger:</strong> +4 (levels at ×1.13). 6 hit points per level is -4.</li>
+            <li><strong>Advantages:</strong> Increased Magery (2× INT in spell points) +8, Resistance to Magic +5.</li>
+            <li><strong>Disadvantages:</strong> Forbidden Armor Type: Plate -5.</li>
+            <li><strong>Primary:</strong> Destruction, Restoration, Alteration. <strong>Major:</strong> Mysticism, Thaumaturgy, Illusion. <strong>Minor:</strong> Short Blade, Dodging, Running, Daedric, Etiquette, Mercantile.</li>
+            <li><strong>Attributes:</strong> Intelligence 75 and Willpower 65, paid for with Strength at 35 and Endurance at 40.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 id="sunscorned">Sunscorned</h3>
+          <p><strong>Shows:</strong> how far disadvantages can take the dagger. Four of them, two heavy, bring it to the bottom of its range, the fastest a class can level. It also moves reputation from the nobility to the underworld.</p>
+          <p><a href="classes/sunscorned.dfclass.json" download>sunscorned.dfclass.json</a></p>
+          <ul>
+            <li><strong>Dagger:</strong> -12, the bottom (levels at ×0.30). 12 hit points per level is +4.</li>
+            <li><strong>Advantages:</strong> Expertise in Hand-to-Hand +2, Athleticism +4, Adrenaline Rush +4.</li>
+            <li><strong>Disadvantages:</strong> Damage from Sunlight -10, Critical Weakness to Fire -14, Forbidden Shield Types: Tower Shield -1, Forbidden Material: Iron -1.</li>
+            <li><strong>Primary:</strong> Hand-to-Hand, Stealth, Dodging. <strong>Major:</strong> Critical Strike, Climbing, Lockpicking. <strong>Minor:</strong> Running, Jumping, Swimming, Streetwise, Pickpocket, Medical.</li>
+            <li><strong>Attributes:</strong> Agility and Speed 65, paid for with Personality at 35.</li>
+            <li><strong>Reputation:</strong> underworld +2, nobility -2.</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

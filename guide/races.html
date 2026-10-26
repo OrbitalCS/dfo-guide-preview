@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style id="enhanced-tokens">:root{--ink:#0e1013;--slate:#171b21;--iron:#2b323b;--bone:#e9e4d9;--dim:#9a9486;--brass:#c08a3e;--blood:#8c3a32;--ruby:#b91309;--verdigris:#4e7f72;--emerald:#2c7341;--cinnabar:#bf2a1f;--display:"Cormorant", Georgia, serif;--data:"Barlow Semi Condensed", system-ui, sans-serif;--brand:"Grenze Gotisch", "Cormorant", Georgia, serif;--side:264px;--gap:1px}</style>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Races - DFO Online</title>
+  <meta name="description" content="The eight races of DFO Online: what each race's screen claims, and what the game's code actually gives them." />
+  <!--
+    PLAYER-GUIDE (2026-10-25): the eight playable races, read from the game's
+    own code (src/systems/races.js, the combat formulas' racial arms,
+    src/systems/survival/temperature.js) and, for what each race screen
+    claims, the game's own TEXT.RSC records 2000-2007, paraphrased. A
+    DOCUMENT: no script, no file of its own, no style of its own.
+
+    test/ui/enhanced/playerguide1.test.js holds this page to RACE_KEYS: each
+    race is one element with id="race-<its RACE_KEYS key, kebab-cased>"
+    titled with the race's name.
+  -->
+  <style id="document-style">@font-face{font-family:Pixelify Five;unicode-range:U+35;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAIIAA0AAAAABKQAAAG5AAEAQgAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcIAZgADQRCAo8UQE2AiQDCAsGAAQgBYQEByAb0gMRFZQRZF8mbyrtyKnsmUtW0uh5eajRkkYiwmd9zzwevvZ7PXd3A4jjU0BFqJDHE1p0Mq4uqiyrUX1VpBcA/QCAwLv/sfo5F6Rn9t09Ls65/8pEjkFdE/m2A84AIXIHmiZwJJFm0pbQC2cFlGjCRS2xqAUWJRAZpScLgtmEN4H2INg9T6DZqHGxacuuvRoVqAhYvaSloI70IIWdVRLHLfgNBOxl356deyxZYUWpr+rJNb8JiK/pmJSRkNErC/QqJlEUgRWVXLV6ESBEVQESKEjoRA+gAFJrOROtuU2rFi1ORpsvt1y9+lW3f3N7TL8NBMKGS6Nj8yes/za5Bg8HfwuvHq+zWX05l2uol0Dwz5V3RP1cQJeUzrud3rstkMyqCwJGSQINDsuiNGGRJvRaJGn3iGytlxSz0U6dvbHww+rNxh0babDbhyLLJzB13YBvnsCnqKuRDUnSwnPAMmETnOcpx2EEPp+mbgw1LSumfKYqw0bLELM6SbGdRm08TAsa7XeSzTUZDFX+dPS7X+6RR5RVmJvg9p8MY4EtHAlMk2kyC+YFf/8E/GKovmqrnuLEDhW0/Ak2MwEAAA==)format("woff2")}@font-face{font-family:Pixelify Five;unicode-range:U+32,U+5A;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAGgAAoAAAAAAxAAAAFVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPAqBJIEfATYCJAMKCwgABCAFaQcoG08CEK4G7CZ4Jq7VZnqPaS6YXuWQw1RbJh6+H/t27nvrmtQMbRCLt0hnKJGdvlT+z5/rbZqg29elVx1WpXCJB/CNL2EDTlNMNbGZr4i7wsrKf1Qlsx1PdmMc+kB2w92NINLQ3/I4DzSggLvLbQzxeALBIZ3X3J0op6mYYkWkA21shWnP+fr/hfwzOID4lQKdICGjSRZoUmQQJYqEZNpzAflL4Y8FADIoQSVGsQwoApTJRWg/BOVjEKpJt/zRejXl4RPResYon4PypSPKH6ezwgzNirNnNhfmUC4f5rlc/pHOPd3f5P95UE+t19nX6YofP9MAgeB3e0qV0f6R8wv8LSXHVguvqTEFZAkEBz1d7mKtI1ileMUFqwJZpzKQABWZFyBUUDgpVSGLonKhSX2hpEbfbhBlI6P9rLf8Vr0BeAJRrAMjezM9SwltXWsjdQs4kyybrQEAAAA=)format("woff2")}*{box-sizing:border-box}body{color:#d8cfae;-webkit-font-smoothing:none;font-variant-ligatures:none;font-feature-settings:"liga" 0, "clig" 0;background:#0a0c11;min-height:100dvh;margin:0;font-family:Pixelify Five,Pixelify Sans,monospace;font-size:16px;line-height:1.6}a{color:#d8cfae;overflow-wrap:anywhere;border-bottom:2px solid #7d7460;text-decoration:none}:is(a:hover,a:focus-visible){color:#f3ef2c;border-color:var(--brass);text-shadow:2px 2px #5d4d0c;outline:none}.skip{background:var(--brass);color:#0a0c11;z-index:10;border:0;padding:10px 14px;position:absolute;top:-60px;left:12px}.skip:focus{top:12px}.caps{letter-spacing:.12em;text-transform:uppercase;color:#7d7460;font-size:14px}.docbar{flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;max-width:760px;margin:0 auto;padding:20px 24px 8px;display:flex}.docbar .home{letter-spacing:.18em;text-transform:uppercase;border:0;font-size:18px}.docbar nav{flex-wrap:wrap;gap:6px 22px;display:flex}.docbar nav a{color:#7d7460;border:0}.docbar nav a[aria-current=page]{color:var(--brass)}.doc{max-width:760px;padding:8px 24px max(56px, env(safe-area-inset-bottom));margin:0 auto}.doc h1,.doc h2{text-shadow:2px 2px #000000b3;overflow-wrap:anywhere;font-weight:400}.doc h1{margin:16px 0 12px;font-size:clamp(24px,4.2vw,34px);line-height:1.2}.doc h2{color:var(--brass);margin:32px 0 10px;font-size:19px;line-height:1.35}.doc p{margin:0 0 12px}.doc ul{margin:0 0 12px;padding-left:24px}.doc li{margin:0 0 6px}.doc strong{font-weight:500}.guide h3{text-shadow:4px 4px #000000b3;margin:0;font-weight:400}.guide .panel{text-align:center;border:4px solid;margin:0 0 44px;padding:0 30px 34px;position:relative}.guide .panel>h2{color:#d8cfae;margin:0 -30px;padding:24px 16px 20px;font-size:clamp(36px,5vw,52px);line-height:1}.guide .panel>.rule{margin:18px auto 26px}.guide .panel>ul,.guide .panel>ol{text-align:left}.guide .card{text-align:left;border:2px solid;margin:0 0 12px;padding:16px 18px 4px}.guide .card h3{margin-bottom:6px;font-size:24px}.guide .steps{counter-reset:step;text-align:left;max-width:64ch;margin:0 auto;padding:0;list-style:none}.guide .step{border:2px solid;grid-template-columns:54px 1fr;gap:0 18px;margin:0 0 12px;padding:16px 18px 4px;display:grid}.guide .step:before{counter-increment:step;content:counter(step);width:54px;height:54px;color:var(--brass);text-shadow:2px 2px #000c;border:2px solid;justify-content:center;align-items:center;font-size:36px;line-height:1;display:flex}.guide .qa{text-align:left;flex-direction:column;gap:12px;margin:24px 0 0;display:flex}.guide .qa>div{border:2px solid;grid-template-columns:220px 1fr;gap:6px 24px;padding:16px 18px;display:grid}.guide .qa dt{text-shadow:2px 2px #000000b3;font-size:24px;line-height:1.1}.guide .qa dd{color:#a89f88;margin:0;font-size:15px}.guide .doorlinks{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;display:grid}.guide .doorlinks a{text-align:center;justify-content:center}.guide .doorlinks a,.guide a[download]{color:#d8cfae;border:2px solid;align-items:center;min-height:44px;padding:6px 14px;display:inline-flex}.guide .rule{align-items:center;gap:16px;width:min(420px,70vw);margin:30px auto 32px;display:flex}.guide .rule:before,.guide .rule:after{content:"";opacity:.55;background:#7d7460;flex:1;height:2px}.guide .gem{background:var(--ruby);width:2px;height:2px;box-shadow:0 -4px 0 var(--brass), 0 4px 0 var(--brass), -4px 0 0 var(--brass), 4px 0 0 var(--brass), -2px -2px 0 var(--ruby), 2px -2px 0 var(--ruby), -2px 2px 0 var(--ruby), 2px 2px 0 var(--ruby);position:relative}@media (max-width:600px){.guide .doorlinks{grid-template-columns:repeat(2,1fr)}}@media (max-width:860px){.guide .panel{padding:0 16px 24px}.guide .panel>h2{margin:0 -16px}.guide .step{grid-template-columns:44px 1fr;gap:0 14px;padding:14px 14px 4px}.guide .step:before{width:44px;height:44px;font-size:28px}.guide .qa>div{grid-template-columns:1fr}}</style>
+  <style id="guide-kit">.guide .panel{background:repeating-conic-gradient(#ffffff06 0 25%, transparent 0 50%) 0 0 / 4px 4px, #0c0e12ed;border-color:#c2b79a #3a352a #25221b #9a9079;box-shadow:0 0 0 1px #050608,0 0 0 3px #5a5446,0 0 0 4px #050608,inset 0 0 0 1px #050608,inset 0 0 0 2px #16140f,6px 6px 0 4px #0000006b}.guide .panel:before{content:"";pointer-events:none;background:linear-gradient(#f3cf86,#f3cf86) 7px 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) 5px 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) 1px 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) 13px 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) 1px 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) 0 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px top 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px top 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px top 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px top 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px top 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 top 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) left 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) left 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) left 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) left 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) left 0 bottom 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 bottom 0/16px 16px no-repeat;position:absolute;inset:-10px}.guide .panel>h2{background:linear-gradient(#ffffff0d,#fff0 70%);box-shadow:0 2px #050608,0 3px #a3988042}.guide .card,.guide .step,.guide .qa>div{background-color:#0f1116eb;border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,inset 0 0 0 1px #050608bf,inset 0 3px 0 -1px #ffffff0a,3px 3px 0 1px #0006}.guide .doorlinks a,.guide a[download]{background-color:#1c1f26;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,2px 2px 0 1px #00000073}:is(.guide .doorlinks a:hover,.guide a[download]:hover,.guide .doorlinks a:focus-visible,.guide a[download]:focus-visible){background-color:#262a33;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#f3cf86 #7a5424 #5c3f1a #c08a3e}.guide .doorlinks a:active,.guide a[download]:active{border-color:#25221b #7a7260 #9a9079 #3a352a;translate:1px 1px;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}.guide .step:before{background-color:#040507b3;border-color:#25221b #7a7260 #9a9079 #3a352a;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}@media (prefers-reduced-motion:reduce){.guide .doorlinks a:active,.guide a[download]:active{translate:none}}</style>
+  <meta name="theme-color" content="#0e1013">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%230e1013%22%2F%3E%3Cpath%20d%3D%22M16%205l11%2011-11%2011L5%2016z%22%20fill%3D%22%23c08a3e%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600&amp;family=Barlow+Semi+Condensed:wght@400;500;600&amp;family=Jacquard+12&amp;family=Pixelify+Sans:wght@400;500&amp;display=swap">
+  <meta name="build-tag" content="459963bf4335">
+<style id="preview-banner">.preview-banner { margin: 0; padding: 10px 24px; background: var(--brass); color: #0a0c11; text-align: center;
+  font-size: 15px; line-height: 1.45; text-shadow: none; }
+.preview-banner a { color: #0a0c11; border-bottom: 2px solid #0a0c11; }
+.preview-banner a:hover, .preview-banner a:focus-visible { color: #0a0c11; text-shadow: none; }</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <p class="preview-banner" role="note">Preview: a proposed player guide for DFO Online by OrbitalCS. Not official. Snapshot of 2026-10-25. The real site is <a href="https://daggerfalljs.dev/">daggerfalljs.dev</a></p>
+  <header class="docbar">
+    <a class="home" href="https://daggerfalljs.dev/">DFO Online</a>
+    <nav class="caps" aria-label="Guide">
+      <a href="../guide/">How to play</a>
+      <a href="../guide/races.html" aria-current="page">Races</a>
+      <a href="../guide/skills.html">Skills</a>
+      <a href="../guide/attributes.html">Attributes</a>
+      <a href="../guide/custom-classes.html">Custom classes</a>
+    </nav>
+  </header>
+  <main id="main" class="doc guide">
+    <article>
+      <h1>Races</h1>
+      <p>Eight races, and none of them changes your attributes or skills: those come from your class. What a race does is narrower than its screen suggests, and this page sets the two side by side.</p>
+
+      <p>The eight races:</p>
+      <nav class="doorlinks" aria-label="Races"><a href="#race-breton">Breton</a><a href="#race-redguard">Redguard</a><a href="#race-nord">Nord</a><a href="#race-dark-elf">Dark Elf</a><a href="#race-high-elf">High Elf</a><a href="#race-wood-elf">Wood Elf</a><a href="#race-khajiit">Khajiit</a><a href="#race-argonian">Argonian</a></nav>
+
+      <h2 id="reading">Reading the entries</h2>
+      <ul>
+        <li><strong>Weapon bonuses</strong> are added to your damage and your chance to hit with that kind of weapon, and only for you, never for an enemy of that race. Under DFO's default combat (the Physical Combat and Armor Overhaul) they are built from your attributes, so the entries give the numbers with every attribute at 50 and at 75. Under Daggerfall Unity's rules, offline with the overhaul off, three races get a bonus that grows with your level instead.</li>
+        <li><strong>A resistance</strong> adds 30 to your saving throw against spells of that kind: from 55% to 85% with Willpower 50. <strong>An immunity</strong> makes the throw certain.</li>
+        <li><strong>Heat and cold:</strong> with survival on, as it is by default, each race carries a little warmth of its own or lacks it. Bretons and Nords feel the cold later and the heat sooner; Redguards, Dark Elves and Khajiit the other way round; Argonians twice as much as those; High and Wood Elves neither.</li>
+        <li><strong>Townsfolk:</strong> the people walking the Iliac Bay's streets are only ever Bretons, Redguards and Nords.</li>
+        <li><strong>Looks (2026-10-25):</strong> with your own Morrowind data attached, characters wear Morrowind's 3D bodies and heads; DFO's own rebuilt heads exist so far only for Breton men played by players. Without it, every race uses Daggerfall's original art.</li>
+      </ul>
+
+      <section class="panel" aria-labelledby="race-breton">
+        <h2 id="race-breton">Breton</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Resists Magic (+30 save) · Handles cold better, heat worse · No weapon bonus</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>High Rock. Bretons walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>A people steeped in magic, harder to harm with it than any other, and so gifted in every arcane art.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd>None, with the combat overhaul on or off.</dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>Resists Magic: +30 to the saving throw.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels the cold a little later and the heat a little sooner. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>Hostile Magic spells land on you less often, and the cold bites a little less. Nothing in the game makes a Breton's own spells stronger, cheaper or more likely to succeed.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-redguard">
+        <h2 id="race-redguard">Redguard</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Weapon bonus with long blades, axes, blunt weapons and bows · Handles heat better, cold worse</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Hammerfell. Redguards walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>A hardy, quick people, born with a gift for weapons that makes them fine warriors.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Long&nbsp;Blade</td><td>+2&nbsp;/&nbsp;+3</td><td>+9&nbsp;/&nbsp;+13</td></tr>
+                  <tr><td>Axe</td><td>+4&nbsp;/&nbsp;+6</td><td>+3&nbsp;/&nbsp;+6</td></tr>
+                  <tr><td>Blunt&nbsp;Weapon</td><td>+2&nbsp;/&nbsp;+4</td><td>+5&nbsp;/&nbsp;+8</td></tr>
+                  <tr><td>Archery</td><td>+2&nbsp;/&nbsp;+2</td><td>+4&nbsp;/&nbsp;+7</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Long Blade: damage from Agility, Strength; to hit from Agility, Speed, Luck.</li>
+                <li>Axe: damage from Strength, Agility; to hit from Strength, Agility, Luck.</li>
+                <li>Blunt Weapon: damage from Strength, Endurance; to hit from Strength, Agility, Luck.</li>
+                <li>Archery: damage from Strength, Agility; to hit from Agility, Speed, Luck.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> level/3 to damage and to hit with every weapon but a bow.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>None.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels the heat a little later and the cold a little sooner. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>The widest weapon race in the game, with a bonus in four weapon skills. "Hardy and quick" is flavour: no formula gives a Redguard more health or speed.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-nord">
+        <h2 id="race-nord">Nord</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Weapon bonus with axes, blunt weapons and fists · Resists Frost · Handles cold better, heat worse</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Skyrim. Nords walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>Strong, hardy and willful, untroubled by cold or by frost magic, and suited to every warrior's art.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Axe</td><td>+4&nbsp;/&nbsp;+6</td><td>+3&nbsp;/&nbsp;+6</td></tr>
+                  <tr><td>Blunt&nbsp;Weapon</td><td>+4&nbsp;/&nbsp;+6</td><td>+4&nbsp;/&nbsp;+7</td></tr>
+                  <tr><td>Fists</td><td>+2&nbsp;/&nbsp;+3</td><td>none</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Axe: damage from Strength, Agility; to hit from Strength, Agility, Luck.</li>
+                <li>Blunt Weapon: damage from Strength, Endurance; to hit from Strength, Agility, Luck.</li>
+                <li>Fists: damage from Strength, Endurance; nothing to hit.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> no weapon bonus.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>Resists Frost: +30 to the saving throw.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels the cold a little later and the heat a little sooner. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>Axes, hammers and bare fists hit harder, and cold weather and frost spells both bite less. Both of the screen's claims hold.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-dark-elf">
+        <h2 id="race-dark-elf">Dark Elf</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Weapon bonus with long and short blades · Handles heat better, cold worse · No magic bonus</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Morrowind. Dark Elves never walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>Strong, clever and quick, versatile in every skill, and known as both warriors and mages.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Long&nbsp;Blade</td><td>+4&nbsp;/&nbsp;+6</td><td>+4&nbsp;/&nbsp;+7</td></tr>
+                  <tr><td>Short&nbsp;Blade</td><td>+2&nbsp;/&nbsp;+2</td><td>+3&nbsp;/&nbsp;+6</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Long Blade: damage from Agility, Strength; to hit from Agility, Speed, Luck.</li>
+                <li>Short Blade: damage from Agility, Speed; to hit from Agility, Speed, Luck.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> level/4 to damage and to hit with any weapon.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>None.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels the heat a little later and the cold a little sooner. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>A blade race. The screen's "mages" has nothing behind it: no formula gives a Dark Elf any magic, whether spell points, cost or resistance.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-high-elf">
+        <h2 id="race-high-elf">High Elf</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Immune to Paralysis · No weapon bonus</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Sumurset Isle. High Elves never walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>Clever, agile and willful natural spellcasters, untouched by paralysing poison and magic.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd>None, with the combat overhaul on or off.</dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>Immune to Paralysis: the saving throw is certain.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels heat and cold exactly as the weather and clothes make them. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>A paralysing spell never takes hold of you, which can decide a fight. "Natural spellcasters" has nothing behind it: no formula gives a High Elf more spell points or cheaper or stronger spells.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-wood-elf">
+        <h2 id="race-wood-elf">Wood Elf</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>The best archery bonus in the game · Weapon bonus with short blades</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Valenwood. Wood Elves never walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>Agile and quick, at home with the bow, and above all suited to thievery.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Archery</td><td>+4&nbsp;/&nbsp;+6</td><td>+9&nbsp;/&nbsp;+13</td></tr>
+                  <tr><td>Short&nbsp;Blade</td><td>+2&nbsp;/&nbsp;+3</td><td>+4&nbsp;/&nbsp;+6</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Archery: damage from Strength, Agility; to hit from Agility, Speed, Luck.</li>
+                <li>Short Blade: damage from Agility, Speed; to hit from Agility, Speed, Luck.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> level/3 to damage and to hit with a bow.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>None.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>With survival on, feels heat and cold exactly as the weather and clothes make them. Climbs and swims like anyone.</dd></div>
+          <div><dt>In play</dt>
+            <dd>The strongest archer race. The thievery claim stops at short blades: nothing helps a Wood Elf pick a lock, pick a pocket or stay hidden.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-khajiit">
+        <h2 id="race-khajiit">Khajiit</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Weapon bonus barehanded and with short blades · +30 Climbing · Handles heat better, cold worse</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Elsweyr. Khajiit never walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>A hardy, clever, agile people, fine climbers, and adept at every thief's art.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Short&nbsp;Blade</td><td>+2&nbsp;/&nbsp;+3</td><td>+4&nbsp;/&nbsp;+6</td></tr>
+                  <tr><td>Fists</td><td>+4&nbsp;/&nbsp;+6</td><td>+6&nbsp;/&nbsp;+7</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Short Blade: damage from Agility, Speed; to hit from Agility, Speed, Luck.</li>
+                <li>Fists: damage from Strength, Endurance, Agility, Speed; to hit from Strength, Endurance, Agility, Speed, Luck.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> no weapon bonus.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>None.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>+30 to the Climbing skill wherever climbing reads it, Daggerfall's climb and Enhanced Climbing alike. With survival on, feels the heat a little later and the cold a little sooner.</dd></div>
+          <div><dt>In play</dt>
+            <dd>The best climber, and the only race whose fists gain to hit as well as damage. As with the Wood Elf, the thief claim stops at blades: no lock, pocket or stealth bonus.</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="race-argonian">
+        <h2 id="race-argonian">Argonian</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <p><strong>Weapon bonus with short blades · No swimming fatigue, never drowns in the open world · Handles heat much better, cold much worse</strong></p>
+        <dl class="qa">
+          <div><dt>Homeland</dt>
+            <dd>Black Marsh. Argonians never walk the Iliac Bay's streets.</dd></div>
+          <div><dt>The race screen says</dt>
+            <dd>A clever, agile, quick reptilian people who do not tire swimming, with thieves, mages and some warriors among them.</dd></div>
+          <div><dt>Weapon bonuses</dt>
+            <dd><p>Default rules:</p>
+              <table>
+                <caption>At 50 / at 75 in every attribute</caption>
+                <thead><tr><th>Weapon</th><th>Damage</th><th>To&nbsp;hit</th></tr></thead>
+                <tbody>
+                  <tr><td>Short&nbsp;Blade</td><td>+2&nbsp;/&nbsp;+4</td><td>+5&nbsp;/&nbsp;+8</td></tr>
+                </tbody>
+              </table>
+              <ul>
+                <li>Short Blade: damage from Agility, Speed; to hit from Agility, Speed, Luck.</li>
+              </ul>
+              <p><strong>Offline with the combat overhaul turned off:</strong> no weapon bonus.</p></dd></div>
+          <div><dt>Resistances and immunities</dt>
+            <dd>None.</dd></div>
+          <div><dt>Movement and survival</dt>
+            <dd>Never pays the extra fatigue other races risk each minute in water. With the Iliac Puddle No More mod's open sea, on by default, never drowns in the open world. With survival on, feels the heat noticeably later and the cold noticeably sooner: the coldest-blooded race.</dd></div>
+          <div><dt>In play</dt>
+            <dd>Water holds no danger, which the screen undersells. Its thieves and mages get nothing from race: the one combat bonus is the short blade.</dd></div>
+        </dl>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

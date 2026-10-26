@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style id="enhanced-tokens">:root{--ink:#0e1013;--slate:#171b21;--iron:#2b323b;--bone:#e9e4d9;--dim:#9a9486;--brass:#c08a3e;--blood:#8c3a32;--ruby:#b91309;--verdigris:#4e7f72;--emerald:#2c7341;--cinnabar:#bf2a1f;--display:"Cormorant", Georgia, serif;--data:"Barlow Semi Condensed", system-ui, sans-serif;--brand:"Grenze Gotisch", "Cormorant", Georgia, serif;--side:264px;--gap:1px}</style>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Attributes - DFO Online</title>
+  <meta name="description" content="The eight attributes in DFO Online and what each one actually affects, read from the game's code." />
+  <!--
+    PLAYER-GUIDE (2026-10-25): the eight attributes and what each one moves,
+    read from the game's own code (src/systems/statMods.js and every formula
+    that reads liveStat), never from Daggerfall lore. A DOCUMENT: no script,
+    no file of its own, no style of its own.
+
+    test/ui/enhanced/playerguide1.test.js holds this page to STAT_KEYS_ORDER:
+    each attribute is one element with id="attribute-<its key>" titled with
+    its name.
+  -->
+  <style id="document-style">@font-face{font-family:Pixelify Five;unicode-range:U+35;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAIIAA0AAAAABKQAAAG5AAEAQgAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcIAZgADQRCAo8UQE2AiQDCAsGAAQgBYQEByAb0gMRFZQRZF8mbyrtyKnsmUtW0uh5eajRkkYiwmd9zzwevvZ7PXd3A4jjU0BFqJDHE1p0Mq4uqiyrUX1VpBcA/QCAwLv/sfo5F6Rn9t09Ls65/8pEjkFdE/m2A84AIXIHmiZwJJFm0pbQC2cFlGjCRS2xqAUWJRAZpScLgtmEN4H2INg9T6DZqHGxacuuvRoVqAhYvaSloI70IIWdVRLHLfgNBOxl356deyxZYUWpr+rJNb8JiK/pmJSRkNErC/QqJlEUgRWVXLV6ESBEVQESKEjoRA+gAFJrOROtuU2rFi1ORpsvt1y9+lW3f3N7TL8NBMKGS6Nj8yes/za5Bg8HfwuvHq+zWX05l2uol0Dwz5V3RP1cQJeUzrud3rstkMyqCwJGSQINDsuiNGGRJvRaJGn3iGytlxSz0U6dvbHww+rNxh0babDbhyLLJzB13YBvnsCnqKuRDUnSwnPAMmETnOcpx2EEPp+mbgw1LSumfKYqw0bLELM6SbGdRm08TAsa7XeSzTUZDFX+dPS7X+6RR5RVmJvg9p8MY4EtHAlMk2kyC+YFf/8E/GKovmqrnuLEDhW0/Ak2MwEAAA==)format("woff2")}@font-face{font-family:Pixelify Five;unicode-range:U+32,U+5A;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAGgAAoAAAAAAxAAAAFVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPAqBJIEfATYCJAMKCwgABCAFaQcoG08CEK4G7CZ4Jq7VZnqPaS6YXuWQw1RbJh6+H/t27nvrmtQMbRCLt0hnKJGdvlT+z5/rbZqg29elVx1WpXCJB/CNL2EDTlNMNbGZr4i7wsrKf1Qlsx1PdmMc+kB2w92NINLQ3/I4DzSggLvLbQzxeALBIZ3X3J0op6mYYkWkA21shWnP+fr/hfwzOID4lQKdICGjSRZoUmQQJYqEZNpzAflL4Y8FADIoQSVGsQwoApTJRWg/BOVjEKpJt/zRejXl4RPResYon4PypSPKH6ezwgzNirNnNhfmUC4f5rlc/pHOPd3f5P95UE+t19nX6YofP9MAgeB3e0qV0f6R8wv8LSXHVguvqTEFZAkEBz1d7mKtI1ileMUFqwJZpzKQABWZFyBUUDgpVSGLonKhSX2hpEbfbhBlI6P9rLf8Vr0BeAJRrAMjezM9SwltXWsjdQs4kyybrQEAAAA=)format("woff2")}*{box-sizing:border-box}body{color:#d8cfae;-webkit-font-smoothing:none;font-variant-ligatures:none;font-feature-settings:"liga" 0, "clig" 0;background:#0a0c11;min-height:100dvh;margin:0;font-family:Pixelify Five,Pixelify Sans,monospace;font-size:16px;line-height:1.6}a{color:#d8cfae;overflow-wrap:anywhere;border-bottom:2px solid #7d7460;text-decoration:none}:is(a:hover,a:focus-visible){color:#f3ef2c;border-color:var(--brass);text-shadow:2px 2px #5d4d0c;outline:none}.skip{background:var(--brass);color:#0a0c11;z-index:10;border:0;padding:10px 14px;position:absolute;top:-60px;left:12px}.skip:focus{top:12px}.caps{letter-spacing:.12em;text-transform:uppercase;color:#7d7460;font-size:14px}.docbar{flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;max-width:760px;margin:0 auto;padding:20px 24px 8px;display:flex}.docbar .home{letter-spacing:.18em;text-transform:uppercase;border:0;font-size:18px}.docbar nav{flex-wrap:wrap;gap:6px 22px;display:flex}.docbar nav a{color:#7d7460;border:0}.docbar nav a[aria-current=page]{color:var(--brass)}.doc{max-width:760px;padding:8px 24px max(56px, env(safe-area-inset-bottom));margin:0 auto}.doc h1,.doc h2{text-shadow:2px 2px #000000b3;overflow-wrap:anywhere;font-weight:400}.doc h1{margin:16px 0 12px;font-size:clamp(24px,4.2vw,34px);line-height:1.2}.doc h2{color:var(--brass);margin:32px 0 10px;font-size:19px;line-height:1.35}.doc p{margin:0 0 12px}.doc ul{margin:0 0 12px;padding-left:24px}.doc li{margin:0 0 6px}.doc strong{font-weight:500}.guide h3{text-shadow:4px 4px #000000b3;margin:0;font-weight:400}.guide .panel{text-align:center;border:4px solid;margin:0 0 44px;padding:0 30px 34px;position:relative}.guide .panel>h2{color:#d8cfae;margin:0 -30px;padding:24px 16px 20px;font-size:clamp(36px,5vw,52px);line-height:1}.guide .panel>.rule{margin:18px auto 26px}.guide .panel>ul,.guide .panel>ol{text-align:left}.guide .card{text-align:left;border:2px solid;margin:0 0 12px;padding:16px 18px 4px}.guide .card h3{margin-bottom:6px;font-size:24px}.guide .steps{counter-reset:step;text-align:left;max-width:64ch;margin:0 auto;padding:0;list-style:none}.guide .step{border:2px solid;grid-template-columns:54px 1fr;gap:0 18px;margin:0 0 12px;padding:16px 18px 4px;display:grid}.guide .step:before{counter-increment:step;content:counter(step);width:54px;height:54px;color:var(--brass);text-shadow:2px 2px #000c;border:2px solid;justify-content:center;align-items:center;font-size:36px;line-height:1;display:flex}.guide .qa{text-align:left;flex-direction:column;gap:12px;margin:24px 0 0;display:flex}.guide .qa>div{border:2px solid;grid-template-columns:220px 1fr;gap:6px 24px;padding:16px 18px;display:grid}.guide .qa dt{text-shadow:2px 2px #000000b3;font-size:24px;line-height:1.1}.guide .qa dd{color:#a89f88;margin:0;font-size:15px}.guide .doorlinks{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;display:grid}.guide .doorlinks a{text-align:center;justify-content:center}.guide .doorlinks a,.guide a[download]{color:#d8cfae;border:2px solid;align-items:center;min-height:44px;padding:6px 14px;display:inline-flex}.guide .rule{align-items:center;gap:16px;width:min(420px,70vw);margin:30px auto 32px;display:flex}.guide .rule:before,.guide .rule:after{content:"";opacity:.55;background:#7d7460;flex:1;height:2px}.guide .gem{background:var(--ruby);width:2px;height:2px;box-shadow:0 -4px 0 var(--brass), 0 4px 0 var(--brass), -4px 0 0 var(--brass), 4px 0 0 var(--brass), -2px -2px 0 var(--ruby), 2px -2px 0 var(--ruby), -2px 2px 0 var(--ruby), 2px 2px 0 var(--ruby);position:relative}@media (max-width:600px){.guide .doorlinks{grid-template-columns:repeat(2,1fr)}}@media (max-width:860px){.guide .panel{padding:0 16px 24px}.guide .panel>h2{margin:0 -16px}.guide .step{grid-template-columns:44px 1fr;gap:0 14px;padding:14px 14px 4px}.guide .step:before{width:44px;height:44px;font-size:28px}.guide .qa>div{grid-template-columns:1fr}}</style>
+  <style id="guide-kit">.guide .panel{background:repeating-conic-gradient(#ffffff06 0 25%, transparent 0 50%) 0 0 / 4px 4px, #0c0e12ed;border-color:#c2b79a #3a352a #25221b #9a9079;box-shadow:0 0 0 1px #050608,0 0 0 3px #5a5446,0 0 0 4px #050608,inset 0 0 0 1px #050608,inset 0 0 0 2px #16140f,6px 6px 0 4px #0000006b}.guide .panel:before{content:"";pointer-events:none;background:linear-gradient(#f3cf86,#f3cf86) 7px 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) 5px 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) 1px 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) 13px 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) 1px 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) 0 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px top 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px top 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px top 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px top 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px top 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 top 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) left 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) left 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) left 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) left 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) left 0 bottom 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 bottom 0/16px 16px no-repeat;position:absolute;inset:-10px}.guide .panel>h2{background:linear-gradient(#ffffff0d,#fff0 70%);box-shadow:0 2px #050608,0 3px #a3988042}.guide .card,.guide .step,.guide .qa>div{background-color:#0f1116eb;border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,inset 0 0 0 1px #050608bf,inset 0 3px 0 -1px #ffffff0a,3px 3px 0 1px #0006}.guide .doorlinks a,.guide a[download]{background-color:#1c1f26;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,2px 2px 0 1px #00000073}:is(.guide .doorlinks a:hover,.guide a[download]:hover,.guide .doorlinks a:focus-visible,.guide a[download]:focus-visible){background-color:#262a33;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#f3cf86 #7a5424 #5c3f1a #c08a3e}.guide .doorlinks a:active,.guide a[download]:active{border-color:#25221b #7a7260 #9a9079 #3a352a;translate:1px 1px;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}.guide .step:before{background-color:#040507b3;border-color:#25221b #7a7260 #9a9079 #3a352a;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}@media (prefers-reduced-motion:reduce){.guide .doorlinks a:active,.guide a[download]:active{translate:none}}</style>
+  <meta name="theme-color" content="#0e1013">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%230e1013%22%2F%3E%3Cpath%20d%3D%22M16%205l11%2011-11%2011L5%2016z%22%20fill%3D%22%23c08a3e%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600&amp;family=Barlow+Semi+Condensed:wght@400;500;600&amp;family=Jacquard+12&amp;family=Pixelify+Sans:wght@400;500&amp;display=swap">
+  <meta name="build-tag" content="459963bf4335">
+<style id="preview-banner">.preview-banner { margin: 0; padding: 10px 24px; background: var(--brass); color: #0a0c11; text-align: center;
+  font-size: 15px; line-height: 1.45; text-shadow: none; }
+.preview-banner a { color: #0a0c11; border-bottom: 2px solid #0a0c11; }
+.preview-banner a:hover, .preview-banner a:focus-visible { color: #0a0c11; text-shadow: none; }</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <p class="preview-banner" role="note">Preview: a proposed player guide for DFO Online by OrbitalCS. Not official. Snapshot of 2026-10-25. The real site is <a href="https://daggerfalljs.dev/">daggerfalljs.dev</a></p>
+  <header class="docbar">
+    <a class="home" href="https://daggerfalljs.dev/">DFO Online</a>
+    <nav class="caps" aria-label="Guide">
+      <a href="../guide/">How to play</a>
+      <a href="../guide/races.html">Races</a>
+      <a href="../guide/skills.html">Skills</a>
+      <a href="../guide/attributes.html" aria-current="page">Attributes</a>
+      <a href="../guide/custom-classes.html">Custom classes</a>
+    </nav>
+  </header>
+  <main id="main" class="doc guide">
+    <article>
+      <h1>Attributes</h1>
+      <p>Eight attributes, each from 0 to 100. This page says what each one actually changes in DFO, read from the game's own code. An attribute only matters where a formula reads it, and some read none: picking locks and pockets, and a spell's cost and power, use no attribute at all.</p>
+
+      <h2 id="rules">How they work</h2>
+      <ul>
+        <li><strong>The live value counts.</strong> Formulas read your attribute with every Fortify, Drain, disease and piece of gear applied, held between 0 and 100. An attribute that falls to 0 kills you.</li>
+        <li><strong>At creation</strong> each attribute is your class's value plus 0 to 10, and you get 6 to 14 more points to spend. You cannot lower one below what it rolled.</li>
+        <li><strong>Each level</strong> gives 4 to 6 points offline and 5 online. DFO rolls the points once per level, so closing the window does not reroll them.</li>
+        <li><strong>Default combat rules.</strong> DFO's combat runs on the Physical Combat and Armor Overhaul mod, on by default and always on online. Where it changes a formula, both are given.</li>
+        <li><strong>The character sheet's to-hit line</strong> (Agility/10 − 5) is shown, but no fight reads it.</li>
+      </ul>
+
+      <h2 id="priorities">What to prioritise at creation</h2>
+      <p>What each attribute buys, and who needs it most. Under DFO's default combat, several attributes do more than Daggerfall players expect; those are marked <strong>more than expected</strong>.</p>
+      <ul>
+        <li><strong>Agility, for every fighter. More than expected.</strong> The gap between your Agility and your foe's counts a quarter toward your chance to hit, two and a half times Daggerfall Unity's tenth, and counts the same way against foes swinging at you.</li>
+        <li><strong>Speed, for every fighter. More than expected.</strong> Besides moving you faster, Speed adds an eighth of the gap to your chance to hit, which it does not in Daggerfall Unity, and makes you swing and cast faster.</li>
+        <li><strong>Endurance, for everyone, early.</strong> Each level adds Endurance/10 − 5 hit points on top of the class's roll. Offline that is never paid back, so a low Endurance early is health you never get. Online, your maximum never falls below what your current Endurance would have given at every level with an average roll; at level 10 with 8 hit points per level that is 87 at Endurance 50 and 114 at 80. <strong>More than expected:</strong> above 50 it also lowers all the damage you take, 0.2% a point.</li>
+        <li><strong>Strength, for fighters.</strong> Damage (Strength − 50)/10, doubled with a two-handed weapon; the weight you can carry; a heavy weapon's swing. <strong>More than expected:</strong> above 50 it lowers the damage you take, 0.1% a point.</li>
+        <li><strong>Willpower, for anyone who meets mages.</strong> Willpower/10 on every saving throw against a spell. <strong>More than expected:</strong> above 50 it also lowers the damage you take, 0.1% a point. With Endurance and Strength, all three at 75 take a tenth off every blow.</li>
+        <li><strong>Intelligence, for spellcasters.</strong> It sets your spell points and nothing else: it never makes a spell cheaper or stronger.</li>
+        <li><strong>Personality, for traders and talkers. More than expected.</strong> About a quarter of what you pay in a haggle and a fifth of what you are offered, half of every court plea alongside Etiquette or Streetwise, and the start of how every person you talk to takes you.</li>
+        <li><strong>Luck, for everyone. More than expected.</strong> At 75 or more your criticals come a third more often (skill/3 instead of skill/4), and loot reads Luck too: rare finds from half as likely at 0 to half again at 100, and better metal. It also counts a tenth of the gap to hit, both ways.</li>
+      </ul>
+
+      <section class="panel" aria-labelledby="the-eight">
+        <h2 id="the-eight">The eight attributes</h2>
+        <div class="rule"><i class="gem"></i></div>
+        <div class="card">
+          <h3 id="attribute-strength">Strength</h3>
+          <ul>
+            <li><strong>Carrying:</strong> you can carry Strength × 1.5 kilograms, and the game will not let you pick up more.</li>
+            <li><strong>Heavy loads:</strong> with the Roleplay &amp; Realism mod, on by default, a load past three quarters of that slows you and drains fatigue.</li>
+            <li><strong>Damage:</strong> (Strength − 50)/10 is added to every blow, from −5 to +5, and twice that with a two-handed weapon other than a bow. Under Daggerfall Unity's rules it is (Strength − 50)/5, with nothing doubled.</li>
+            <li><strong>Swing speed:</strong> a heavy weapon swings slower, and Strength takes the weight off. This is DFO's own rule.</li>
+            <li><strong>Fatigue:</strong> your maximum fatigue grows with Strength + Endurance.</li>
+            <li><strong>Default combat rules also:</strong> above 50, Strength lowers the damage you take a little and helps your shield block.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-intelligence">Intelligence</h3>
+          <ul>
+            <li><strong>Spell points:</strong> your maximum is Intelligence × your class's multiplier, from 0.5 to 3. A Fortify or Drain Intelligence changes it at once.</li>
+            <li>It does not change what a spell costs or how strong it is. Those come from the school's skill and your level.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-willpower">Willpower</h3>
+          <ul>
+            <li><strong>Resisting magic:</strong> Willpower/10 is added to every saving throw you make against a spell. The throw is held between 5% and 95%.</li>
+            <li><strong>Default combat rules also:</strong> above 50, Willpower lowers the damage you take a little and helps your shield block, and with a class bonus against a kind of foe it widens that bonus.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-agility">Agility</h3>
+          <ul>
+            <li><strong>Hitting and being hit:</strong> (your Agility − your foe's)/4 is added to your chance to hit, and your foe's chance to hit you counts it the other way. Under Daggerfall Unity's rules it is /10. Every chance is held between 3% and 97%.</li>
+            <li><strong>Two weapons:</strong> with a weapon in each hand, the off hand is −5 to hit at Agility 50, a point better or worse per 10 Agility.</li>
+            <li><strong>Default combat rules also:</strong> Agility helps your shield block, and builds most of the bonus a class gets from its weapon expertise.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-endurance">Endurance</h3>
+          <ul>
+            <li><strong>Health:</strong> each level adds a roll of half to all of your class's hit points per level, plus Endurance/10 − 5, at least 1. The level-up reads Endurance without its Fortify. Online, your maximum health never falls below what your current Endurance would have given every level, so raising it later counts back.</li>
+            <li><strong>Resting:</strong> each hour of rest heals Endurance/10 − 5 more (see <a href="../guide/skills.html#skill-medical">Medical</a>).</li>
+            <li><strong>Fatigue and breath:</strong> maximum fatigue grows with Strength + Endurance, and your maximum breath under water is Endurance/2.</li>
+            <li><strong>Default combat rules also:</strong> above 50, Endurance lowers the damage you take, twice as much as Strength or Willpower, and helps your shield block.</li>
+            <li><strong>Survival:</strong> Endurance sets how much drink you can take before it tells, and how much heat or cold before bare feet cost you.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-personality">Personality</h3>
+          <ul>
+            <li><strong>Prices:</strong> with <a href="../guide/skills.html#skill-mercantile">Mercantile</a>, Personality haggles every price. It is about a quarter of the haggle when buying and a fifth when selling.</li>
+            <li><strong>Talk:</strong> how a person takes you starts at Personality/5, and decides whether they answer and how well.</li>
+            <li><strong>Court:</strong> a plea succeeds at your legal reputation + (Etiquette or Streetwise + Personality)/2.</li>
+            <li><strong>Calming foes:</strong> Personality/10 is added when you speak a creature's language, and Personality/5 when you use Etiquette or Streetwise.</li>
+            <li><strong>In DFO:</strong> online, Personality counts up to 100 at most in a haggle.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-speed">Speed</h3>
+          <ul>
+            <li><strong>Movement:</strong> walking, running, crouching and riding all start from your Speed. Running adds your <a href="../guide/skills.html#skill-running">Running</a> skill on top.</li>
+            <li><strong>Swinging:</strong> at Speed 100 you swing 1.67 times as often as at 50. This is DFO's own rule.</li>
+            <li><strong>Casting:</strong> spells cast up to a quarter faster at 100, and a quarter slower at 0. This is DFO's own rule.</li>
+            <li><strong>Default combat rules also:</strong> (your Speed − your foe's)/8 is added to your chance to hit, and Speed helps your shield block. Under Daggerfall Unity's rules Speed does not touch the hit.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 id="attribute-luck">Luck</h3>
+          <ul>
+            <li><strong>Hitting and being hit:</strong> (your Luck − your foe's)/10 is added to your chance to hit, both ways. Under the default rules, Luck above 50 also makes you harder to hit.</li>
+            <li><strong>Critical strikes:</strong> better Luck makes them likelier (see <a href="../guide/skills.html#skill-critical-strike">Critical Strike</a>).</li>
+            <li><strong>Climbing:</strong> up to +10 to every climbing check.</li>
+            <li><strong>Loot:</strong> Luck scales the odds of a rare find, from half as likely at Luck 0 to half again at 100, and lifts the metal that found weapons and armor are made of.</li>
+            <li><strong>Food:</strong> with survival on, raw or spoiled food makes you sick unless you pass a roll against your Luck.</li>
+            <li>Luck acts only where it is named here. It is not spread across every roll.</li>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
