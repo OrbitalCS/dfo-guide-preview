@@ -1,134 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <style id="enhanced-tokens">:root{--ink:#0e1013;--slate:#171b21;--iron:#2b323b;--bone:#e9e4d9;--dim:#9a9486;--brass:#c08a3e;--blood:#8c3a32;--ruby:#b91309;--verdigris:#4e7f72;--emerald:#2c7341;--cinnabar:#bf2a1f;--display:"Cormorant", Georgia, serif;--data:"Barlow Semi Condensed", system-ui, sans-serif;--brand:"Grenze Gotisch", "Cormorant", Georgia, serif;--side:264px;--gap:1px}</style>
-
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>How to play - DFO Online</title>
-  <meta name="description" content="A new player's guide to DFO Online: getting Daggerfall's game data in on a desktop or a phone, making a first character, your first hour, and where to get help." />
-  <!--
-    PLAYER-GUIDE (2026-10-25): the player guide's front page - for a player
-    who has never read the repo. A DOCUMENT, as the Terms and the Privacy
-    Policy are: no script, no file of its own, no style of its own. The
-    skin, the fonts and the documents' one rule set are put in at build by
-    scripts/landingHtml.mjs (DOCUMENT_PATHS). What it says of the game is
-    read from the game's code, not from Daggerfall lore.
-  -->
-  <style id="document-style">@font-face{font-family:Pixelify Five;unicode-range:U+35;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAIIAA0AAAAABKQAAAG5AAEAQgAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcIAZgADQRCAo8UQE2AiQDCAsGAAQgBYQEByAb0gMRFZQRZF8mbyrtyKnsmUtW0uh5eajRkkYiwmd9zzwevvZ7PXd3A4jjU0BFqJDHE1p0Mq4uqiyrUX1VpBcA/QCAwLv/sfo5F6Rn9t09Ls65/8pEjkFdE/m2A84AIXIHmiZwJJFm0pbQC2cFlGjCRS2xqAUWJRAZpScLgtmEN4H2INg9T6DZqHGxacuuvRoVqAhYvaSloI70IIWdVRLHLfgNBOxl356deyxZYUWpr+rJNb8JiK/pmJSRkNErC/QqJlEUgRWVXLV6ESBEVQESKEjoRA+gAFJrOROtuU2rFi1ORpsvt1y9+lW3f3N7TL8NBMKGS6Nj8yes/za5Bg8HfwuvHq+zWX05l2uol0Dwz5V3RP1cQJeUzrud3rstkMyqCwJGSQINDsuiNGGRJvRaJGn3iGytlxSz0U6dvbHww+rNxh0babDbhyLLJzB13YBvnsCnqKuRDUnSwnPAMmETnOcpx2EEPp+mbgw1LSumfKYqw0bLELM6SbGdRm08TAsa7XeSzTUZDFX+dPS7X+6RR5RVmJvg9p8MY4EtHAlMk2kyC+YFf/8E/GKovmqrnuLEDhW0/Ak2MwEAAA==)format("woff2")}@font-face{font-family:Pixelify Five;unicode-range:U+32,U+5A;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAGgAAoAAAAAAxAAAAFVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAPAqBJIEfATYCJAMKCwgABCAFaQcoG08CEK4G7CZ4Jq7VZnqPaS6YXuWQw1RbJh6+H/t27nvrmtQMbRCLt0hnKJGdvlT+z5/rbZqg29elVx1WpXCJB/CNL2EDTlNMNbGZr4i7wsrKf1Qlsx1PdmMc+kB2w92NINLQ3/I4DzSggLvLbQzxeALBIZ3X3J0op6mYYkWkA21shWnP+fr/hfwzOID4lQKdICGjSRZoUmQQJYqEZNpzAflL4Y8FADIoQSVGsQwoApTJRWg/BOVjEKpJt/zRejXl4RPResYon4PypSPKH6ezwgzNirNnNhfmUC4f5rlc/pHOPd3f5P95UE+t19nX6YofP9MAgeB3e0qV0f6R8wv8LSXHVguvqTEFZAkEBz1d7mKtI1ileMUFqwJZpzKQABWZFyBUUDgpVSGLonKhSX2hpEbfbhBlI6P9rLf8Vr0BeAJRrAMjezM9SwltXWsjdQs4kyybrQEAAAA=)format("woff2")}*{box-sizing:border-box}body{color:#d8cfae;-webkit-font-smoothing:none;font-variant-ligatures:none;font-feature-settings:"liga" 0, "clig" 0;background:#0a0c11;min-height:100dvh;margin:0;font-family:Pixelify Five,Pixelify Sans,monospace;font-size:16px;line-height:1.6}a{color:#d8cfae;overflow-wrap:anywhere;border-bottom:2px solid #7d7460;text-decoration:none}:is(a:hover,a:focus-visible){color:#f3ef2c;border-color:var(--brass);text-shadow:2px 2px #5d4d0c;outline:none}.skip{background:var(--brass);color:#0a0c11;z-index:10;border:0;padding:10px 14px;position:absolute;top:-60px;left:12px}.skip:focus{top:12px}.caps{letter-spacing:.12em;text-transform:uppercase;color:#7d7460;font-size:14px}.docbar{flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;max-width:760px;margin:0 auto;padding:20px 24px 8px;display:flex}.docbar .home{letter-spacing:.18em;text-transform:uppercase;border:0;font-size:18px}.docbar nav{flex-wrap:wrap;gap:6px 22px;display:flex}.docbar nav a{color:#7d7460;border:0}.docbar nav a[aria-current=page]{color:var(--brass)}.doc{max-width:760px;padding:8px 24px max(56px, env(safe-area-inset-bottom));margin:0 auto}.doc h1,.doc h2{text-shadow:2px 2px #000000b3;overflow-wrap:anywhere;font-weight:400}.doc h1{margin:16px 0 12px;font-size:clamp(24px,4.2vw,34px);line-height:1.2}.doc h2{color:var(--brass);margin:32px 0 10px;font-size:19px;line-height:1.35}.doc p{margin:0 0 12px}.doc ul{margin:0 0 12px;padding-left:24px}.doc li{margin:0 0 6px}.doc strong{font-weight:500}.guide h3{text-shadow:4px 4px #000000b3;margin:0;font-weight:400}.guide .panel{text-align:center;border:4px solid;margin:0 0 44px;padding:0 30px 34px;position:relative}.guide .panel>h2{color:#d8cfae;margin:0 -30px;padding:24px 16px 20px;font-size:clamp(36px,5vw,52px);line-height:1}.guide .panel>.rule{margin:18px auto 26px}.guide .panel>ul,.guide .panel>ol{text-align:left}.guide .card{text-align:left;border:2px solid;margin:0 0 12px;padding:16px 18px 4px}.guide .card h3{margin-bottom:6px;font-size:24px}.guide .steps{counter-reset:step;text-align:left;max-width:64ch;margin:0 auto;padding:0;list-style:none}.guide .step{border:2px solid;grid-template-columns:54px 1fr;gap:0 18px;margin:0 0 12px;padding:16px 18px 4px;display:grid}.guide .step:before{counter-increment:step;content:counter(step);width:54px;height:54px;color:var(--brass);text-shadow:2px 2px #000c;border:2px solid;justify-content:center;align-items:center;font-size:36px;line-height:1;display:flex}.guide .qa{text-align:left;flex-direction:column;gap:12px;margin:24px 0 0;display:flex}.guide .qa>div{border:2px solid;grid-template-columns:220px 1fr;gap:6px 24px;padding:16px 18px;display:grid}.guide .qa dt{text-shadow:2px 2px #000000b3;font-size:24px;line-height:1.1}.guide .qa dd{color:#a89f88;margin:0;font-size:15px}.guide .doorlinks{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;display:grid}.guide .doorlinks a{text-align:center;justify-content:center}.guide .doorlinks a,.guide a[download]{color:#d8cfae;border:2px solid;align-items:center;min-height:44px;padding:6px 14px;display:inline-flex}.guide .rule{align-items:center;gap:16px;width:min(420px,70vw);margin:30px auto 32px;display:flex}.guide .rule:before,.guide .rule:after{content:"";opacity:.55;background:#7d7460;flex:1;height:2px}.guide .gem{background:var(--ruby);width:2px;height:2px;box-shadow:0 -4px 0 var(--brass), 0 4px 0 var(--brass), -4px 0 0 var(--brass), 4px 0 0 var(--brass), -2px -2px 0 var(--ruby), 2px -2px 0 var(--ruby), -2px 2px 0 var(--ruby), 2px 2px 0 var(--ruby);position:relative}@media (max-width:600px){.guide .doorlinks{grid-template-columns:repeat(2,1fr)}}@media (max-width:860px){.guide .panel{padding:0 16px 24px}.guide .panel>h2{margin:0 -16px}.guide .step{grid-template-columns:44px 1fr;gap:0 14px;padding:14px 14px 4px}.guide .step:before{width:44px;height:44px;font-size:28px}.guide .qa>div{grid-template-columns:1fr}}</style>
-  <style id="guide-kit">.guide .panel{background:repeating-conic-gradient(#ffffff06 0 25%, transparent 0 50%) 0 0 / 4px 4px, #0c0e12ed;border-color:#c2b79a #3a352a #25221b #9a9079;box-shadow:0 0 0 1px #050608,0 0 0 3px #5a5446,0 0 0 4px #050608,inset 0 0 0 1px #050608,inset 0 0 0 2px #16140f,6px 6px 0 4px #0000006b}.guide .panel:before{content:"";pointer-events:none;background:linear-gradient(#f3cf86,#f3cf86) 7px 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) 5px 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) 1px 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) 1px 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) 13px 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) 1px 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) 0 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px top 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px top 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px top 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px top 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px top 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px top 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 top 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) left 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) left 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) left 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) left 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) left 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) left 0 bottom 0/16px 16px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 7px bottom 7px/2px 2px no-repeat,linear-gradient(#3d2a12,#3d2a12) right 5px bottom 5px/6px 6px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/14px 2px no-repeat,linear-gradient(#f3cf86,#f3cf86) right 1px bottom 1px/2px 14px no-repeat,linear-gradient(#7a5424,#7a5424) right 1px bottom 13px/14px 2px no-repeat,linear-gradient(#7a5424,#7a5424) right 13px bottom 1px/2px 14px no-repeat,linear-gradient(#c08a3e,#c08a3e) right 1px bottom 1px/14px 14px no-repeat,linear-gradient(#050608,#050608) right 0 bottom 0/16px 16px no-repeat;position:absolute;inset:-10px}.guide .panel>h2{background:linear-gradient(#ffffff0d,#fff0 70%);box-shadow:0 2px #050608,0 3px #a3988042}.guide .card,.guide .step,.guide .qa>div{background-color:#0f1116eb;border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,inset 0 0 0 1px #050608bf,inset 0 3px 0 -1px #ffffff0a,3px 3px 0 1px #0006}.guide .doorlinks a,.guide a[download]{background-color:#1c1f26;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#9a9079 #3a352a #25221b #7a7260;box-shadow:0 0 0 1px #050608,2px 2px 0 1px #00000073}:is(.guide .doorlinks a:hover,.guide a[download]:hover,.guide .doorlinks a:focus-visible,.guide a[download]:focus-visible){background-color:#262a33;background-image:linear-gradient(#ffffff14 0 2px,#0000 2px calc(100% - 3px),#00000052 calc(100% - 3px));border-color:#f3cf86 #7a5424 #5c3f1a #c08a3e}.guide .doorlinks a:active,.guide a[download]:active{border-color:#25221b #7a7260 #9a9079 #3a352a;translate:1px 1px;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}.guide .step:before{background-color:#040507b3;border-color:#25221b #7a7260 #9a9079 #3a352a;box-shadow:0 0 0 1px #050608,inset 2px 2px #00000080}@media (prefers-reduced-motion:reduce){.guide .doorlinks a:active,.guide a[download]:active{translate:none}}</style>
-  <meta name="theme-color" content="#0e1013">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%230e1013%22%2F%3E%3Cpath%20d%3D%22M16%205l11%2011-11%2011L5%2016z%22%20fill%3D%22%23c08a3e%22%2F%3E%3C%2Fsvg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600&amp;family=Barlow+Semi+Condensed:wght@400;500;600&amp;family=Jacquard+12&amp;family=Pixelify+Sans:wght@400;500&amp;display=swap">
-  <meta name="build-tag" content="459963bf4335">
-<style id="preview-banner">.preview-banner { margin: 0; padding: 10px 24px; background: var(--brass); color: #0a0c11; text-align: center;
-  font-size: 15px; line-height: 1.45; text-shadow: none; }
-.preview-banner a { color: #0a0c11; border-bottom: 2px solid #0a0c11; }
-.preview-banner a:hover, .preview-banner a:focus-visible { color: #0a0c11; text-shadow: none; }</style>
+  <title>How to play - DFO Online player guide (preview)</title>
+  <meta http-equiv="refresh" content="0; url=../" />
+  <link rel="canonical" href="../" />
+  <meta name="robots" content="noindex" />
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <p class="preview-banner" role="note">Preview: a proposed player guide for DFO Online by OrbitalCS. Not official. Snapshot of 2026-10-25. The real site is <a href="https://daggerfalljs.dev/">daggerfalljs.dev</a></p>
-  <header class="docbar">
-    <a class="home" href="https://daggerfalljs.dev/">DFO Online</a>
-    <nav class="caps" aria-label="Guide">
-      <a href="../guide/" aria-current="page">How to play</a>
-      <a href="../guide/races.html">Races</a>
-      <a href="../guide/skills.html">Skills</a>
-      <a href="../guide/attributes.html">Attributes</a>
-      <a href="../guide/custom-classes.html">Custom classes</a>
-    </nav>
-  </header>
-  <main id="main" class="doc guide">
-    <article>
-      <h1>How to play</h1>
-
-      <h2 id="what">What DFO Online is</h2>
-      <p>DFO Online is The Elder Scrolls II: Daggerfall, rebuilt to run in a web browser, with online play. It runs on a desktop or a phone, and there is nothing to install. It started as a faithful copy of Daggerfall Unity and is now its own game: most of it plays as Daggerfall does, and where it differs, these pages say so.</p>
-      <p>It is not finished, and it changes every day.</p>
-
-      <h2 id="game-data">Get your game data in</h2>
-      <p>DFO Online does not come with Daggerfall's own files. You bring them, once. Daggerfall is free from any of these:</p>
-      <ul>
-        <li><a href="https://store.steampowered.com/app/1812390/">Steam</a></li>
-        <li><a href="https://www.gog.com/game/the_elder_scrolls_chapter_ii_daggerfall">GOG</a></li>
-        <li><a href="https://forums.dfworkshop.net/viewtopic.php?t=2360">DaggerfallGameFiles.zip</a>, the game files on their own</li>
-      </ul>
-      <p><strong>On a desktop:</strong> press <a href="https://daggerfalljs.dev/play/">Play</a> and pick your ARENA2 folder, or drop it on the page. On Steam it is under DF/DAGGER/ARENA2.</p>
-      <p><strong>On a phone:</strong> a phone browser cannot be handed a folder, so hand over the zip itself. Put DaggerfallGameFiles.zip on the phone (AirDrop it on an iPhone), press Play, and choose the zip. Do not unzip it first.</p>
-      <p>The game keeps what you gave it, so that browser will not ask again. Your saves live in the browser's storage too. The <a href="https://daggerfalljs.dev/#desktop">desktop app</a> keeps them as real files instead, and reads ARENA2 straight from your Daggerfall install.</p>
-
-      <h2 id="first-character">Make your first character</h2>
-      <p>Character creation runs in Daggerfall's order:</p>
-      <ol class="steps">
-        <li class="step"><div>
-          <h3>Race and gender</h3>
-          <p><a href="../guide/races.html">Races</a> says what each race really gets.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Class</h3>
-          <p>Answer Daggerfall's questions and be given one, pick one of its eighteen from the list, or build your own. <a href="../guide/custom-classes.html">Custom classes</a> explains the builder.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Biography</h3>
-          <p>Answer its questions, or let the game write it for you.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Name and face</h3>
-          <p>Name your character and pick a face.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Attributes and skills</h3>
-          <p>Spend your bonus points. <a href="../guide/attributes.html">Attributes</a> and <a href="../guide/skills.html">Skills</a> say what each one really does in this game.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Reflexes</h3>
-          <p>Higher reflexes make enemies attack sooner and land their extra strikes more often. In return, every use of a skill counts for more: a quarter more at Very High, a quarter less at Very Low.</p>
-        </div></li>
-      </ol>
-      <p>If you play online, or have turned on the Oblivion Remastered leveling mod, you are also asked how to level. Online it is always Daggerfall's way: your primary, major and minor skills add up to a sum, and every 15 points of it is a level.</p>
-
-      <h2 id="first-hour">Your first hour</h2>
-      <ol class="steps">
-        <li class="step"><div>
-          <h3>You wake in Privateer's Hold</h3>
-          <p>As everyone does: a dungeon, and the way out is the first thing to find. Pick up what you can carry.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Controls</h3>
-          <p>Daggerfall Unity's defaults: WASD and the mouse, F6 for your pack, Esc for the rest. Touch controls appear on their own on a phone. You can rebind anything in Settings.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Use your skills</h3>
-          <p>A skill rises from use, and the game checks for a raise at most once every six game hours, so resting is when you see it go up.</p>
-        </div></li>
-        <li class="step"><div>
-          <h3>Save often</h3>
-          <p>F9 quick saves and F11 quick loads.</p>
-        </div></li>
-      </ol>
-
-      <h2 id="from-dfu">Coming from Daggerfall Unity?</h2>
-      <p>Most of DFO plays as Daggerfall Unity does. The differences that change a fight or a build the most:</p>
-      <ul>
-        <li><strong>Dodging counts half, not a quarter,</strong> against an enemy's chance to hit you. <a href="../guide/skills.html#skill-dodging">Dodging</a></li>
-        <li><strong>Critical strikes multiply damage,</strong> up to double at skill 100, and Luck makes them come more often. In Daggerfall Unity they only help you hit. <a href="../guide/skills.html#skill-critical-strike">Critical Strike</a></li>
-        <li><strong>Agility counts a quarter of the gap to hit, Speed an eighth, and Luck also defends you.</strong> In Daggerfall Unity Agility counts a tenth and Speed nothing. <a href="../guide/attributes.html#attribute-agility">Agility</a>, <a href="../guide/attributes.html#attribute-speed">Speed</a>, <a href="../guide/attributes.html#attribute-luck">Luck</a></li>
-        <li><strong>Race weapon bonuses come from your attributes,</strong> not your level, and six races have them, not three. <a href="../guide/races.html">Races</a></li>
-        <li><strong>Skills can pass 100,</strong> up to 200, through Master Skills: always on online, a switch offline. <a href="../guide/skills.html#master-skills">Master Skills</a></li>
-        <li><strong>Climbing is a whole moveset,</strong> with ledges, mantles, vaults and leaps, when Enhanced Climbing is on, as it always is online. <a href="../guide/skills.html#skill-climbing">Climbing</a></li>
-        <li><strong>Online, Endurance counts back.</strong> Your health never falls below what your current Endurance would have given at every level. <a href="../guide/attributes.html#attribute-endurance">Endurance</a></li>
-      </ul>
-
-      <h2 id="help">Where to get help</h2>
-      <ul>
-        <li><strong>Questions, builds and people to play with:</strong> the <a href="https://discord.gg/jM2JdwSM8w" rel="noopener">DFO Online Discord</a>.</li>
-        <li><strong>Something broken:</strong> reload first. If it is still broken, file it on the <a href="https://github.com/Lattymoy/daggerfall-js-source/issues">issue tracker</a> and say what you did.</li>
-        <li><strong>How a rule works:</strong> the <a href="../guide/races.html">Races</a>, <a href="../guide/skills.html">Skills</a> and <a href="../guide/attributes.html">Attributes</a> pages, read from the game's own code.</li>
-      </ul>
-    </article>
-  </main>
+  <p>How to play is at the <a href="../">front of this preview</a>.</p>
 </body>
 </html>
